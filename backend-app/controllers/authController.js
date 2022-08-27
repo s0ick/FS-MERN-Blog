@@ -46,7 +46,7 @@ export const register = async (request, response) => {
     .then(res => res)
     .catch(error => {
       console.log(error);
-      return {message: 'Не удалось завершить регистрацию. Попробуйте позже'};
+      return {message: 'Не удалось завершить регистрацию. Возможно такая почта уже занята или попробуйте позже'};
     });
 
   if (!user._id) {
