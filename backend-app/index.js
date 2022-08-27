@@ -3,10 +3,8 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 
 import {loginValidation, postCreateValidation, registerValidation} from './validators.js';
-import checkAuthMe from './utils/checkAuthMe.js';
-import handleValidationErrors from './utils/handleValidationErrors.js';
-import * as AuthController from './controllers/authController.js';
-import * as PostController from './controllers/postController.js';
+import {checkAuthMe, handleValidationErrors} from './utils/indexUtils.js';
+import {AuthController, PostController}  from './controllers/indexController.js';
 
 mongoose
   .connect('mongodb+srv://admin:14abobal@cluster0.7wefsbn.mongodb.net/blog?retryWrites=true&w=majority')
