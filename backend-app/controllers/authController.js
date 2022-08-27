@@ -1,4 +1,3 @@
-import {validationResult} from 'express-validator';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
@@ -6,11 +5,6 @@ import UserModel from '../models/Users.js';
 import {SECRET_KEY} from '../utils/constants.js';
 
 export const login = async (request, response) => {
-  const errors = validationResult(request);
-  if (!errors.isEmpty()) {
-    return response.status(400).json(errors.array());
-  }
-
   const user = await UserModel.findOne({email: request.body.email});
 
   if (!user) {
@@ -42,11 +36,6 @@ export const login = async (request, response) => {
 
 
 export const register = async (request, response) => {
-  const errors = validationResult(request);
-  if (!errors.isEmpty()) {
-    return response.status(400).json(errors.array());
-  }
-
   const {email, fullName, avatarUrl, password} = request.body;
 
   const salt = await bcrypt.genSalt(10);

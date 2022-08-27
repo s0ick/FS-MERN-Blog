@@ -1,7 +1,3 @@
-import {validationResult} from 'express-validator';
-
-import PostModel from '../models/Post.js';
-
 export const getAll = async (request, response) => {
   const posts = await PostModel
     .find().populate('user').exec()
@@ -73,11 +69,6 @@ export const remove = (request, response) => {
 };
 
 export const create = async (request, response) => {
-  const errors = validationResult(request);
-  if (!errors.isEmpty()) {
-    return response.status(400).json(errors.array());
-  }
-
   const {title, text, imageUrl, tags} = request.body;
 
   const doc = new PostModel({

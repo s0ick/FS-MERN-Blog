@@ -4,6 +4,7 @@ import multer from 'multer';
 
 import {loginValidation, postCreateValidation, registerValidation} from './validators.js';
 import checkAuthMe from './utils/checkAuthMe.js';
+import handleValidationErrors from './utils/handleValidationErrors.js';
 import * as AuthController from './controllers/authController.js';
 import * as PostController from './controllers/postController.js';
 
@@ -14,31 +15,37 @@ mongoose
 
 const app = express();
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
-const storage = multer.diskStorage(
-  {
-    destination: (_, __, callBack) => {
-      callBack(null, 'uploads')
-    },
-    filename: (_, file, callBack) => {
-      callBack(null, file.originalname)
-    }
+const storage = multer.diskStorage({
+  destination: (_, __, callBack) => {
+    callBack(null, 'uploads');
+  },
+  filename: (_, file, callBack) => {
+    callBack(null, file.originalname);
   }
-);
+});
 
-const upload = multer([storage]);
+const upload = multer({storage});
 
 /* Authorization and Registration */
-app.post('/auth/login', loginValidation, AuthController.login);
-app.post('/auth/register', registerValidation, AuthController.register);
+app.post('/auth/login', loginValidation, handleValidationErrors, AuthController.login);
+app.post('/auth/register', registerValidation, handleValidationErrors, AuthController.register);
 app.get('/auth/me', checkAuthMe, AuthController.getMe);
 
 /* Posts */
-app.post('/posts', checkAuthMe, postCreateValidation, PostController.create);
 app.get('/posts', PostController.getAll);
 app.get('/posts/:id', PostController.getOne);
 app.delete('/posts/:id', checkAuthMe, PostController.remove);
-app.patch('/posts/:id', checkAuthMe, PostController.update);
+app.post('/posts', checkAuthMe, postCreateValidation, handleValidationErrors, PostController.create);
+app.patch('/posts/:id', checkAuthMe, postCreateValidation, handleValidationErrors, PostController.update);
+
+/* Upload image */
+app.post('/upload', checkAuthMe, upload.single('image'), (request, response) => {
+  return response.json({
+    url: `/uploads/${request.file.originalname}`
+  });
+});
 
 
 app.listen(2999, (error) => {
