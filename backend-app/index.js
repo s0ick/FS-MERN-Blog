@@ -1,5 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import multer from 'multer';
 
 import {loginValidation, postCreateValidation, registerValidation} from './validators.js';
 import checkAuthMe from './utils/checkAuthMe.js';
@@ -13,6 +14,19 @@ mongoose
 
 const app = express();
 app.use(express.json());
+
+const storage = multer.diskStorage(
+  {
+    destination: (_, __, callBack) => {
+      callBack(null, 'uploads')
+    },
+    filename: (_, file, callBack) => {
+      callBack(null, file.originalname)
+    }
+  }
+);
+
+const upload = multer([storage]);
 
 /* Authorization and Registration */
 app.post('/auth/login', loginValidation, AuthController.login);
