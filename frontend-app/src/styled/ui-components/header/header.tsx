@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 
-import styles from './header.module.css';
+import styles from './header.module.scss';
 
 export const Header = () => {
   const isAuth = false;

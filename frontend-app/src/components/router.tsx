@@ -1,7 +1,9 @@
 import React from 'react';
 import Container from '@mui/material/Container';
 
-import {Header} from './header/header';
+import {Header} from '../styled/ui-components/header/header';
+
+import {HomePage} from './home-page';
 
 function Router() {
   return (
@@ -9,7 +11,7 @@ function Router() {
       <Header/>
 
       <Container maxWidth={'lg'}>
-
+        <HomePage/>
       </Container>
     </React.Fragment>
   );
