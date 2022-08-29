@@ -14,7 +14,7 @@ export interface IPost {
   imageUrl: string | undefined;
   children?: React.ReactNode | undefined;
   user: IUser;
-  isEditable: boolean;
+  isEditable?: boolean | undefined;
   isFullPost?: boolean | undefined;
   isLoading?: boolean | undefined;
 }

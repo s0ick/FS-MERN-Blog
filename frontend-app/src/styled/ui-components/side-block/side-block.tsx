@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
-import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
+import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
 
 import {ISideBlock} from '../../../types/common';
 

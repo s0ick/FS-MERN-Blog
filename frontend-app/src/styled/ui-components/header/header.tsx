@@ -31,7 +31,7 @@ export const Header = () => {
               </>
             ) : (
               <>
-                <Link to={'/login'}>
+                <Link to={'/auth'}>
                   <Button variant={'outlined'}>{'Войти'}</Button>
                 </Link>
                 <Link to={'/register'}>
