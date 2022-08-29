@@ -4,8 +4,8 @@ import Tab from '@mui/material/Tab';
 import Grid from '@mui/material/Grid';
 
 import {Post} from '../styled/ui-components/post/post';
-import {TagsBlock} from '../styled/ui-components/tags-block/tags-block';
-import {CommentsBlock} from '../styled/ui-components/comment-block/comment-block';
+import {TagsBlock} from '../styled/ui-components/blocks/tags-block';
+import {CommentsBlock} from '../styled/ui-components/blocks/comment-block';
 
 export const HomePage = () => {
   return (

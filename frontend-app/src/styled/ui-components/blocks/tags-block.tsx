@@ -8,9 +8,9 @@ import TagIcon from '@mui/icons-material/Tag';
 import ListItemText from '@mui/material/ListItemText';
 import Skeleton from '@mui/material/Skeleton';
 
-import {ITagsBlock} from '../../../types/tags';
+import {ITagsBlock} from '../../../types/common';
 
-import { SideBlock } from '../side-block/side-block';
+import { SideBlock } from './side-block';
 
 export const TagsBlock: FC<ITagsBlock> = ({items, isLoading = true}) => {
   return (

@@ -15,11 +15,11 @@ function Router() {
       <Header/>
 
       <Container maxWidth={'lg'}>
-        {/*<HomePage/>*/}
+        <HomePage/>
         {/*<DetailedPostPage/>*/}
         {/*<CreatePostPage/>*/}
         {/*<LoginPage/>*/}
-        <RegistrationPage/>
+        {/*<RegistrationPage/>*/}
       </Container>
     </React.Fragment>
   );

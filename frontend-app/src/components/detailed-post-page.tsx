@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Post} from '../styled/ui-components/post/post';
 import {AddComment} from '../styled/ui-components/add-comment/add-comment';
-import {CommentsBlock} from '../styled/ui-components/comment-block/comment-block';
+import {CommentsBlock} from '../styled/ui-components/blocks/comment-block';
 
 export const DetailedPostPage = () => {
   return (

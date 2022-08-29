@@ -9,7 +9,7 @@ import Skeleton from '@mui/material/Skeleton';
 
 import {ICommentBlock} from '../../../types/comments';
 
-import {SideBlock} from '../side-block/side-block';
+import {SideBlock} from './side-block';
 
 export const CommentsBlock: FC<ICommentBlock> = ({items, children, isLoading = true}) => {
   return (

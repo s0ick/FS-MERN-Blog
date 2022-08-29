@@ -14,3 +14,8 @@ export interface IOptionsSimpleMDE {
   placeholder: string;
   autosave: AutoSaveOptions
 }
+
+export interface ITagsBlock {
+  items: Array<string>;
+  isLoading: boolean | undefined;
+}
